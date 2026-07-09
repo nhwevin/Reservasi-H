@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Riwayat Reservasi — Hotel Graha Nusantara</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans','sans-serif'], display: ['Cormorant Garamond','serif'] },
+          colors: {
+            navy: { 50:'#f0f3fa',100:'#dde4f2',200:'#b9c8e5',300:'#8da5d0',400:'#5f7fb8',500:'#3d5fa0',600:'#2d4a87',700:'#1e3155',800:'#152340',900:'#0d1728' }
+          },
+          keyframes: { fadeUp: { '0%':{opacity:'0',transform:'translateY(14px)'},'100%':{opacity:'1',transform:'translateY(0)'} } },
+          animation: { 'fade-up':'fadeUp 0.45s ease both', 'fade-up2':'fadeUp 0.45s 0.1s ease both' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .sidebar-item { transition: all 0.18s ease; }
+    .sidebar-item:hover { background: rgba(30,49,85,0.07); transform: translateX(2px); }
+    .sidebar-item.active { background: rgba(30,49,85,0.12); border-left: 3px solid #1e3155; }
+    .row-hover { transition: background 0.15s; }
+    .row-hover:hover { background: rgba(240,243,250,0.8); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #b9c8e5; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-navy-50 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="w-56 bg-white border-r border-navy-100 flex flex-col shadow-sm flex-shrink-0">
+    <div class="px-5 py-5 border-b border-navy-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-navy-800 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline stroke-linecap="round" stroke-linejoin="round" points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-navy-800 leading-tight">Hotel Graha</p>
+          <p class="text-xs font-bold text-navy-800 leading-tight">Nusantara</p>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 py-4 border-b border-navy-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-navy-100 flex items-center justify-center text-xs font-bold text-navy-700 flex-shrink-0">BS</div>
+        <div class="overflow-hidden">
+          <p class="text-sm font-semibold text-navy-800 truncate">Budi Santoso</p>
+          <p class="text-xs text-navy-400 truncate">Pelanggan</p>
+        </div>
+      </div>
+    </div>
+    <nav class="flex-1 px-3 py-4 space-y-0.5">
+      <a href="beranda.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Beranda</a>
+      <a href="reservasi.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Reservasi Baru</a>
+      <a href="riwayat.html" class="sidebar-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-700 font-semibold text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Riwayat</a>
+      <a href="notifikasi.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>Notifikasi<span class="ml-auto bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span></a>
+      <a href="profil.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>Profil Saya</a>
+      <div class="border-t border-navy-100 pt-2 mt-2">
+        <a href="login-hotel.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-400 hover:text-red-600 font-medium text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>Keluar</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <header class="bg-white border-b border-navy-100 px-7 py-4 flex items-center justify-between flex-shrink-0 shadow-sm">
+      <div>
+        <h1 class="font-display text-xl text-navy-800">Riwayat Reservasi</h1>
+        <p class="text-xs text-navy-400 mt-0.5">Semua transaksi reservasi Anda</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="notifikasi.html" class="relative w-9 h-9 rounded-full border border-navy-100 flex items-center justify-center text-navy-500 hover:bg-navy-50 transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+        </a>
+        <a href="profil.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-navy-100 flex items-center justify-center text-xs font-bold text-navy-700">BS</div>
+          <div class="hidden sm:block">
+            <p class="text-sm font-semibold text-navy-800 leading-none">Budi Santoso</p>
+            <p class="text-xs text-navy-400 mt-0.5">Pelanggan</p>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-7 py-6 space-y-5">
+
+      <!-- Ringkasan cepat -->
+      <div class="grid grid-cols-4 gap-4 animate-fade-up">
+        <div class="bg-white rounded-2xl p-4 border border-navy-100 shadow-sm text-center">
+          <p class="text-2xl font-bold text-navy-800">5</p>
+          <p class="text-xs text-navy-400 mt-1">Total</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-navy-100 shadow-sm text-center">
+          <p class="text-2xl font-bold text-emerald-500">1</p>
+          <p class="text-xs text-navy-400 mt-1">Aktif</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-navy-100 shadow-sm text-center">
+          <p class="text-2xl font-bold text-blue-500">3</p>
+          <p class="text-xs text-navy-400 mt-1">Selesai</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-navy-100 shadow-sm text-center">
+          <p class="text-2xl font-bold text-red-400">1</p>
+          <p class="text-xs text-navy-400 mt-1">Dibatalkan</p>
+        </div>
+      </div>
+
+      <!-- Tabel riwayat -->
+      <div class="bg-white rounded-2xl border border-navy-100 shadow-sm overflow-hidden animate-fade-up2">
+        <!-- Filter + search -->
+        <div class="px-6 py-4 border-b border-navy-100 flex items-center justify-between flex-wrap gap-3">
+          <div class="flex gap-2 flex-wrap" id="filter-tabs">
+            <button onclick="filterRiwayat('semua')" data-filter="semua"
+              class="filter-btn text-xs font-semibold px-4 py-1.5 rounded-full bg-navy-800 text-white transition">Semua</button>
+            <button onclick="filterRiwayat('aktif')" data-filter="aktif"
+              class="filter-btn text-xs font-semibold px-4 py-1.5 rounded-full bg-navy-50 text-navy-600 hover:bg-navy-100 transition">Aktif</button>
+            <button onclick="filterRiwayat('selesai')" data-filter="selesai"
+              class="filter-btn text-xs font-semibold px-4 py-1.5 rounded-full bg-navy-50 text-navy-600 hover:bg-navy-100 transition">Selesai</button>
+            <button onclick="filterRiwayat('batal')" data-filter="batal"
+              class="filter-btn text-xs font-semibold px-4 py-1.5 rounded-full bg-navy-50 text-navy-600 hover:bg-navy-100 transition">Dibatalkan</button>
+          </div>
+          <div class="relative">
+            <svg class="w-4 h-4 text-navy-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="search-input" oninput="filterRiwayat(currentFilter)" placeholder="Cari reservasi..." class="pl-9 pr-4 py-1.5 text-sm border border-navy-200 rounded-lg text-navy-700 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-navy-200"/>
+          </div>
+        </div>
+
+        <!-- Table header -->
+        <div class="grid grid-cols-12 gap-2 px-6 py-3 bg-navy-50 text-xs font-bold text-navy-500 uppercase tracking-wide border-b border-navy-100">
+          <div class="col-span-1">ID</div>
+          <div class="col-span-3">Kamar</div>
+          <div class="col-span-2">Check-in</div>
+          <div class="col-span-2">Check-out</div>
+          <div class="col-span-2">Total</div>
+          <div class="col-span-2 text-right">Status</div>
+        </div>
+
+        <div id="riwayat-list" class="divide-y divide-navy-50"></div>
+
+        <!-- Empty state -->
+        <div id="empty-state" class="hidden text-center py-14">
+          <div class="w-14 h-14 rounded-full bg-navy-50 flex items-center justify-center mx-auto mb-3">
+            <svg class="w-7 h-7 text-navy-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <p class="text-sm text-navy-400">Tidak ada reservasi ditemukan</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="px-6 py-3 border-t border-navy-100 flex items-center justify-between">
+          <p class="text-xs text-navy-400" id="row-count">Menampilkan 5 dari 5 reservasi</p>
+          <a href="reservasi.html" class="text-xs font-semibold text-navy-600 hover:text-navy-800 transition flex items-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            Buat Reservasi Baru
+          </a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  let currentFilter = 'semua';
+
+  const riwayatData = [
+    { id:'#001', kamar:'Kamar Deluxe · TA2', checkin:'18 Nov 2024', checkout:'21 Nov 2024', total:'Rp 900.000', status:'aktif' },
+    { id:'#002', kamar:'Kamar Standar · TA1', checkin:'01 Okt 2024', checkout:'05 Okt 2024', total:'Rp 1.400.000', status:'selesai' },
+    { id:'#003', kamar:'Kamar Suite · TA5', checkin:'12 Agt 2024', checkout:'14 Agt 2024', total:'Rp 2.400.000', status:'selesai' },
+    { id:'#004', kamar:'Kamar Standar · TA3', checkin:'30 Jun 2024', checkout:'02 Jul 2024', total:'Rp 700.000', status:'batal' },
+    { id:'#005', kamar:'Kamar Deluxe · TA4', checkin:'10 Mei 2024', checkout:'13 Mei 2024', total:'Rp 1.800.000', status:'selesai' },
+  ];
+
+  const statusClass = { aktif:'bg-emerald-50 text-emerald-700', selesai:'bg-blue-50 text-blue-700', batal:'bg-red-50 text-red-600' };
+  const statusLabel = { aktif:'● Aktif', selesai:'Selesai', batal:'Dibatalkan' };
+
+  function filterRiwayat(filter) {
+    currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      const isActive = b.dataset.filter === filter;
+      b.className = isActive
+        ? 'filter-btn text-xs font-semibold px-4 py-1.5 rounded-full bg-navy-800 text-white transition'
+        : 'filter-btn text-xs font-semibold px-4 py-1.5 rounded-full bg-navy-50 text-navy-600 hover:bg-navy-100 transition';
+    });
+
+    const search = document.getElementById('search-input').value.toLowerCase();
+    let items = filter === 'semua' ? riwayatData : riwayatData.filter(r => r.status === filter);
+    if (search) items = items.filter(r => r.kamar.toLowerCase().includes(search) || r.id.includes(search));
+
+    const list = document.getElementById('riwayat-list');
+    const empty = document.getElementById('empty-state');
+    const count = document.getElementById('row-count');
+
+    if (items.length === 0) {
+      list.innerHTML = '';
+      empty.classList.remove('hidden');
+      count.textContent = 'Tidak ada hasil';
+    } else {
+      empty.classList.add('hidden');
+      count.textContent = `Menampilkan ${items.length} dari ${riwayatData.length} reservasi`;
+      list.innerHTML = items.map((r,i) => `
+        <div class="row-hover grid grid-cols-12 gap-2 px-6 py-4 items-center text-sm ${i%2===1?'bg-navy-50/30':''}">
+          <div class="col-span-1 text-navy-400 font-medium">${r.id}</div>
+          <div class="col-span-3">
+            <p class="font-semibold text-navy-800">${r.kamar}</p>
+          </div>
+          <div class="col-span-2 text-navy-500">${r.checkin}</div>
+          <div class="col-span-2 text-navy-500">${r.checkout}</div>
+          <div class="col-span-2 font-semibold text-navy-700">${r.total}</div>
+          <div class="col-span-2 flex justify-end">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full ${statusClass[r.status]}">${statusLabel[r.status]}</span>
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  filterRiwayat('semua');
+</script>
+</body>
+</html>

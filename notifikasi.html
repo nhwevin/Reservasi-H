@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifikasi & Profil — Hotel Graha Nusantara</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Plus Jakarta Sans','sans-serif'], display:['Cormorant Garamond','serif'] },
+          colors: { navy:{50:'#f0f3fa',100:'#dde4f2',200:'#b9c8e5',300:'#8da5d0',400:'#5f7fb8',500:'#3d5fa0',600:'#2d4a87',700:'#1e3155',800:'#152340',900:'#0d1728'} },
+          keyframes: { fadeUp:{ '0%':{opacity:'0',transform:'translateY(14px)'},'100%':{opacity:'1',transform:'translateY(0)'} } },
+          animation: { 'fade-up':'fadeUp 0.45s ease both','fade-up2':'fadeUp 0.45s 0.1s ease both','fade-up3':'fadeUp 0.45s 0.2s ease both' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .sidebar-item { transition: all 0.18s ease; }
+    .sidebar-item:hover { background: rgba(30,49,85,0.07); transform: translateX(2px); }
+    .sidebar-item.active { background: rgba(30,49,85,0.12); border-left: 3px solid #1e3155; }
+    .input-field { transition: border-color 0.2s, box-shadow 0.2s; }
+    .input-field:focus { outline:none; border-color:#1e3155; box-shadow:0 0 0 3px rgba(30,49,85,0.12); }
+    .btn-navy { transition: transform 0.15s, box-shadow 0.15s; }
+    .btn-navy:hover { transform: translateY(-1px); box-shadow: 0 5px 16px rgba(30,49,85,0.28); }
+    .notif-row { transition: background 0.15s; }
+    .notif-row:hover { background: rgba(240,243,250,0.7); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #b9c8e5; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-navy-50 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="w-56 bg-white border-r border-navy-100 flex flex-col shadow-sm flex-shrink-0">
+    <div class="px-5 py-5 border-b border-navy-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-navy-800 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline stroke-linecap="round" stroke-linejoin="round" points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-navy-800 leading-tight">Hotel Graha</p>
+          <p class="text-xs font-bold text-navy-800 leading-tight">Nusantara</p>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 py-4 border-b border-navy-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-navy-100 flex items-center justify-center text-xs font-bold text-navy-700 flex-shrink-0">BS</div>
+        <div class="overflow-hidden">
+          <p class="text-sm font-semibold text-navy-800 truncate">Budi Santoso</p>
+          <p class="text-xs text-navy-400 truncate">Pelanggan</p>
+        </div>
+      </div>
+    </div>
+    <nav class="flex-1 px-3 py-4 space-y-0.5">
+      <a href="beranda.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Beranda
+      </a>
+      <a href="reservasi.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Reservasi Baru
+      </a>
+      <a href="riwayat.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Riwayat
+      </a>
+      <a href="notifikasi.html" class="sidebar-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-700 font-semibold text-sm">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        Notifikasi
+        <span id="sidebar-badge" class="ml-auto bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
+      </a>
+      <a href="profil.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-500 hover:text-navy-700 font-medium text-sm">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        Profil Saya
+      </a>
+      <div class="border-t border-navy-100 pt-2 mt-2">
+        <a href="login-hotel.html" class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-400 hover:text-red-600 font-medium text-sm">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          Keluar
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="bg-white border-b border-navy-100 px-7 py-4 flex items-center justify-between flex-shrink-0 shadow-sm">
+      <div>
+        <h1 class="font-display text-xl text-navy-800" id="page-heading">Notifikasi</h1>
+        <p class="text-xs text-navy-400 mt-0.5" id="page-subheading">Pesan dan pembaruan terbaru untuk Anda</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="relative w-9 h-9 rounded-full border border-navy-100 flex items-center justify-center text-navy-500">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" id="topbar-dot"></span>
+        </div>
+        <a href="profil.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-navy-100 flex items-center justify-center text-xs font-bold text-navy-700">BS</div>
+          <div class="hidden sm:block">
+            <p class="text-sm font-semibold text-navy-800 leading-none">Budi Santoso</p>
+            <p class="text-xs text-navy-400 mt-0.5">Pelanggan</p>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <!-- Tab switcher (Notifikasi / Profil) -->
+    <div class="bg-white border-b border-navy-100 px-7">
+      <div class="flex gap-0">
+        <button onclick="switchTab('notifikasi')" id="tab-notif"
+          class="tab-btn py-3.5 px-5 text-sm font-semibold text-navy-800 border-b-2 border-navy-800 transition">
+          Notifikasi <span class="ml-1.5 bg-red-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5" id="tab-badge">3</span>
+        </button>
+        <button onclick="switchTab('profil')" id="tab-profil"
+          class="tab-btn py-3.5 px-5 text-sm font-medium text-navy-400 border-b-2 border-transparent hover:text-navy-600 transition">
+          Profil Saya
+        </button>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto px-7 py-6">
+
+      <!-- ── TAB NOTIFIKASI ── -->
+      <div id="content-notifikasi" class="tab-content active space-y-4">
+
+        <!-- Aksi atas -->
+        <div class="flex items-center justify-between animate-fade-up">
+          <p class="text-sm text-navy-500"><span id="unread-count" class="font-semibold text-navy-800">3</span> notifikasi belum dibaca</p>
+          <button onclick="tandaiSemua()" class="text-sm font-semibold text-navy-600 hover:text-navy-800 border border-navy-200 rounded-lg px-4 py-1.5 hover:bg-navy-50 transition">
+            Tandai semua dibaca
+          </button>
+        </div>
+
+        <!-- List notifikasi -->
+        <div class="bg-white rounded-2xl border border-navy-100 shadow-sm overflow-hidden animate-fade-up2">
+          <div id="notif-list" class="divide-y divide-navy-50"></div>
+        </div>
+
+      </div>
+
+      <!-- ── TAB PROFIL ── -->
+      <div id="content-profil" class="tab-content">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Kartu profil -->
+          <div class="animate-fade-up">
+            <div class="bg-white rounded-2xl border border-navy-100 shadow-sm overflow-hidden">
+              <div class="bg-navy-800 px-6 py-8 flex flex-col items-center text-center">
+                <div class="w-20 h-20 rounded-full bg-navy-200 flex items-center justify-center text-2xl font-bold text-navy-800 mb-3 border-4 border-navy-700">BS</div>
+                <p class="font-bold text-white text-lg">Budi Santoso</p>
+                <p class="text-navy-300 text-sm mt-0.5">budi.santoso@email.com</p>
+                <span class="mt-3 text-xs font-semibold bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">Pelanggan Aktif</span>
+              </div>
+              <div class="p-5 space-y-3">
+                <div class="flex justify-between text-sm py-1 border-b border-navy-50">
+                  <span class="text-navy-400">No. Telepon</span>
+                  <span class="font-semibold text-navy-800">+62 812-3456-7890</span>
+                </div>
+                <div class="flex justify-between text-sm py-1 border-b border-navy-50">
+                  <span class="text-navy-400">Alamat</span>
+                  <span class="font-semibold text-navy-800">Medan, Sumut</span>
+                </div>
+                <div class="flex justify-between text-sm py-1 border-b border-navy-50">
+                  <span class="text-navy-400">Bergabung</span>
+                  <span class="font-semibold text-navy-800">Januari 2024</span>
+                </div>
+                <div class="flex justify-between text-sm py-1">
+                  <span class="text-navy-400">Total Reservasi</span>
+                  <span class="font-bold text-navy-800">5</span>
+                </div>
+              </div>
+              <div class="px-5 pb-5">
+                <a href="riwayat.html" class="w-full py-2.5 border border-navy-200 text-navy-600 rounded-xl text-sm font-semibold hover:bg-navy-50 transition text-center flex items-center justify-center gap-1.5">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg>
+                  Lihat Riwayat Saya
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Edit profil + ganti password -->
+          <div class="lg:col-span-2 space-y-5 animate-fade-up2">
+
+            <div class="bg-white rounded-2xl border border-navy-100 shadow-sm p-6">
+              <h3 class="text-base font-bold text-navy-800 mb-5">Edit Informasi Profil</h3>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Nama Depan</label>
+                  <input type="text" value="Budi" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Nama Belakang</label>
+                  <input type="text" value="Santoso" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Email</label>
+                <input type="email" value="budi.santoso@email.com" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+              </div>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">No. Telepon</label>
+                  <input type="text" value="+62 812-3456-7890" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Kota</label>
+                  <input type="text" value="Medan, Sumut" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+              </div>
+              <div class="mb-5">
+                <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Alamat Lengkap</label>
+                <textarea rows="2" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40 resize-none">Jl. Gatot Subroto No. 12, Medan Baru, Medan, Sumatera Utara</textarea>
+              </div>
+              <div id="save-success" class="hidden mb-3 flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-100 rounded-xl text-sm text-emerald-700">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Perubahan berhasil disimpan!
+              </div>
+              <button id="save-btn" onclick="simpanProfil()" class="btn-navy py-2.5 px-6 bg-navy-800 hover:bg-navy-700 text-white rounded-xl text-sm font-semibold transition">
+                Simpan Perubahan
+              </button>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-navy-100 shadow-sm p-6">
+              <h3 class="text-base font-bold text-navy-800 mb-5">Ganti Password</h3>
+              <div class="space-y-4 mb-5">
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Password Lama</label>
+                  <input type="password" placeholder="Masukkan password lama" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Password Baru</label>
+                  <input type="password" placeholder="Min. 8 karakter" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-navy-500 uppercase tracking-wide mb-1.5">Konfirmasi Password Baru</label>
+                  <input type="password" placeholder="Ulangi password baru" class="input-field w-full border border-navy-200 rounded-xl px-3 py-2.5 text-sm text-navy-800 bg-navy-50/40"/>
+                </div>
+              </div>
+              <div class="p-3 bg-amber-50 border border-amber-100 rounded-xl text-xs text-amber-700 mb-4">
+                Password harus minimal 8 karakter, mengandung huruf besar, huruf kecil, dan angka.
+              </div>
+              <button onclick="gantiPassword()" id="pw-btn" class="btn-navy py-2.5 px-6 bg-navy-800 hover:bg-navy-700 text-white rounded-xl text-sm font-semibold transition">
+                Ganti Password
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  const notifData = [
+    { id:1, warna:'bg-emerald-500', dotClass:'bg-emerald-500', bgClass:'', teks:'Reservasi #001 berhasil dikonfirmasi. Kamar Deluxe TA2 siap untuk Anda pada 18 November 2024.', waktu:'2 jam yang lalu', dibaca:false },
+    { id:2, warna:'bg-amber-500', dotClass:'bg-amber-500', bgClass:'', teks:'Pengingat: Check-out Anda dijadwalkan besok, 21 November 2024 pukul 12.00 WIB. Harap siapkan barang bawaan Anda.', waktu:'5 jam yang lalu', dibaca:false },
+    { id:3, warna:'bg-blue-500', dotClass:'bg-blue-500', bgClass:'', teks:'Promo akhir tahun! Dapatkan diskon 20% untuk reservasi kamar Suite bulan Desember 2024. Berlaku hingga 31 Des.', waktu:'1 hari yang lalu', dibaca:false },
+    { id:4, warna:'bg-navy-300', dotClass:'bg-navy-300', bgClass:'opacity-60', teks:'Reservasi #004 telah dibatalkan sesuai permintaan Anda. Tidak ada biaya pembatalan yang dikenakan.', waktu:'5 hari yang lalu', dibaca:true },
+  ];
+
+  function renderNotif() {
+    const list = document.getElementById('notif-list');
+    const unread = notifData.filter(n => !n.dibaca).length;
+
+    document.getElementById('unread-count').textContent = unread;
+    document.getElementById('tab-badge').textContent = unread;
+    document.getElementById('tab-badge').style.display = unread > 0 ? 'inline' : 'none';
+    document.getElementById('sidebar-badge').textContent = unread;
+    document.getElementById('sidebar-badge').style.display = unread > 0 ? 'flex' : 'none';
+    document.getElementById('topbar-dot').style.display = unread > 0 ? 'block' : 'none';
+
+    list.innerHTML = notifData.map((n,i) => `
+      <div class="notif-row flex gap-4 px-6 py-4 cursor-pointer ${n.dibaca ? 'opacity-55' : ''} ${i%2===1?'bg-navy-50/30':''}" onclick="bacaNotif(${n.id})">
+        <div class="flex-shrink-0 mt-1">
+          <div class="w-2.5 h-2.5 rounded-full ${n.dotClass} ${n.dibaca ? 'opacity-40' : ''}"></div>
+        </div>
+        <div class="flex-1">
+          <p class="text-sm ${n.dibaca ? 'text-navy-400' : 'text-navy-800 font-medium'} leading-relaxed">${n.teks}</p>
+          <p class="text-xs text-navy-400 mt-1.5">${n.waktu}${n.dibaca ? ' · Sudah dibaca' : ''}</p>
+        </div>
+        ${!n.dibaca ? '<div class="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500 mt-2"></div>' : ''}
+      </div>`).join('');
+  }
+
+  function bacaNotif(id) {
+    const n = notifData.find(x => x.id === id);
+    if (n) n.dibaca = true;
+    renderNotif();
+  }
+
+  function tandaiSemua() {
+    notifData.forEach(n => n.dibaca = true);
+    renderNotif();
+  }
+
+  function switchTab(tab) {
+    ['notifikasi','profil'].forEach(t => {
+      document.getElementById('content-'+t).classList.toggle('active', t === tab);
+      const btn = document.getElementById('tab-'+t);
+      if (t === tab) {
+        btn.className = 'tab-btn py-3.5 px-5 text-sm font-semibold text-navy-800 border-b-2 border-navy-800 transition';
+      } else {
+        btn.className = 'tab-btn py-3.5 px-5 text-sm font-medium text-navy-400 border-b-2 border-transparent hover:text-navy-600 transition';
+      }
+    });
+
+    const headings = {
+      notifikasi: ['Notifikasi', 'Pesan dan pembaruan terbaru untuk Anda'],
+      profil: ['Profil Saya', 'Kelola informasi akun Anda']
+    };
+    document.getElementById('page-heading').textContent = headings[tab][0];
+    document.getElementById('page-subheading').textContent = headings[tab][1];
+  }
+
+  function simpanProfil() {
+    const btn = document.getElementById('save-btn');
+    btn.textContent = 'Menyimpan...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('save-success').classList.remove('hidden');
+      document.getElementById('save-success').classList.add('flex');
+      btn.textContent = 'Simpan Perubahan';
+      btn.disabled = false;
+      setTimeout(() => {
+        document.getElementById('save-success').classList.add('hidden');
+        document.getElementById('save-success').classList.remove('flex');
+      }, 3000);
+    }, 1000);
+  }
+
+  function gantiPassword() {
+    const btn = document.getElementById('pw-btn');
+    btn.textContent = 'Memproses...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '✓ Password Diperbarui!';
+      btn.classList.replace('bg-navy-800','bg-emerald-600');
+      setTimeout(() => {
+        btn.textContent = 'Ganti Password';
+        btn.classList.replace('bg-emerald-600','bg-navy-800');
+        btn.disabled = false;
+      }, 2500);
+    }, 1200);
+  }
+
+  renderNotif();
+</script>
+</body>
+</html>
