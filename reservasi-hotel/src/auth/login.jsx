@@ -105,6 +105,54 @@ const styles = `
     width: 14px;
     height: 14px;
   }
+
+  /* --- RESPONSIVE LOGIC --- */
+  .main-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 896px;
+    display: flex;
+    flex-direction: column; /* Mobile: Menyusun dari atas ke bawah */
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    min-height: auto;
+  }
+
+  .left-panel {
+    display: flex; /* Diaktifkan di mobile agar tetap tampil */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%; /* Lebar penuh di mobile */
+    background: #152340;
+    padding: 2.5rem 1.5rem; /* Menyesuaikan padding mobile */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+
+  /* Desktop View */
+  @media (min-width: 768px) {
+    .main-container {
+      flex-direction: row; /* Kembali ke layout mendatar */
+      min-height: 580px;
+    }
+    .left-panel {
+      width: 41.666%; /* Lebar proporsional di desktop */
+      padding: 2.5rem;
+    }
+    .right-panel {
+      padding: 2.5rem;
+    }
+  }
 `;
 
 export default function Login() {
@@ -140,9 +188,7 @@ export default function Login() {
     setAdminLoading(true);
     
     try {
-      // Memanggil fungsi dari authService
       const data = await login(adminEmail, adminPw, "admin");
-      
       setAdminSuccess(true);
       localStorage.setItem("token", data.token);
       localStorage.setItem("userRole", "admin");
@@ -170,9 +216,7 @@ export default function Login() {
     setPelLoading(true);
 
     try {
-      // Memanggil fungsi dari authService
       const data = await login(pelEmail.trim(), pelPw, "pelanggan".trim());
-      
       setPelSuccess(true);
       localStorage.setItem("token", data.token);  
       localStorage.setItem("userRole", "pelanggan");
@@ -190,20 +234,20 @@ export default function Login() {
 
   // Ikon SVG Komponen Pendukung
   const EyeIcon = () => (
-    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+    <svg style={{width:16, height:16}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
     </svg>
   );
 
   const EyeOffIcon = () => (
-    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+    <svg style={{width:16, height:16}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22"/>
     </svg>
   );
 
   const SpinIcon = () => (
-    <svg className="w-4 h-4 spin-anim" fill="none" viewBox="0 0 24 24">
+    <svg style={{width:16, height:16}} className="spin-anim" fill="none" viewBox="0 0 24 24">
       <circle style={{opacity:0.25}} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
       <path style={{opacity:0.75}} fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
     </svg>
@@ -229,10 +273,10 @@ export default function Login() {
           <div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)',width:600,height:600,borderRadius:'50%',opacity:0.05,border:'1px solid white'}}/>
         </div>
 
-        <div style={{position:'relative',zIndex:10,width:'100%',maxWidth:896,display:'flex',borderRadius:'1.5rem',overflow:'hidden',boxShadow:'0 32px 80px rgba(0,0,0,0.5)',minHeight:580}}>
+        <div className="main-container">
 
-          {/* PANEL KIRI (Informasi Hotel) */}
-          <div style={{display:'flex',flexDirection:'column',justifyContent:'space-between',width:'41.666%',background:'#152340',padding:'2.5rem',position:'relative',overflow:'hidden'}}>
+          {/* PANEL KIRI (Informasi Hotel - Tampil di Atas pada Mode Mobile) */}
+          <div className="left-panel">
             <div style={{position:'absolute',inset:0,opacity:0.1,backgroundImage:'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)',backgroundSize:'24px 24px'}}/>
             <div style={{position:'absolute',bottom:0,right:0,width:256,height:256,opacity:0.05,borderRadius:'50%',border:'2px solid white',transform:'translate(64px,64px)'}}/>
             <div style={{position:'absolute',top:'25%',left:-32,width:160,height:160,opacity:0.05,borderRadius:'50%',border:'1px solid white'}}/>
@@ -288,11 +332,11 @@ export default function Login() {
               </div>
             </div>
 
-            <p style={{position:'relative',color:'rgba(255,255,255,0.3)',fontSize:'0.75rem'}}>© 2024 Hotel Graha Nusantara</p>
+            <p style={{position:'relative',color:'rgba(255,255,255,0.3)',fontSize:'0.75rem',textAlign:'center'}}>© 2026 Hotel Graha Nusantara</p>
           </div>
 
           {/* PANEL KANAN (Form Glassmorphism) */}
-          <div className="glass-card" style={{flex:1,display:'flex',flexDirection:'column',justifyContent:'center',padding:'2.5rem'}}>
+          <div className="glass-card right-panel">
 
             {/* Heading */}
             <div className="fade-up" style={{marginBottom:'1.75rem'}}>
