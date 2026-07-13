@@ -140,18 +140,18 @@ export default function Register() {
     setLoading(true);
     setSuccess(false);
 
-    try {
-      // Memanggil fungsi dari service file
-      await registerCustomer({
-        nama: form.nama,
-        email: form.email,
-        noHp: form.noHp,
-        password: form.password,
-      });
+  try {
+    // Panggil langsung nilainya secara terpisah (tanpa dibungkus kurung kurawal {})
+    await registerCustomer(
+      form.nama,
+      form.email,
+      form.noHp,
+      form.password
+    );
 
-      setSuccess(true);
-      setForm({ nama: '', email: '', noHp: '', password: '', konfirmasi: '' });
-      setAgree(false);
+    setSuccess(true);
+    setForm({ nama: '', email: '', noHp: '', password: '', konfirmasi: '' });
+    setAgree(false);
     } catch (error) {
       // Menangkap pesan error dari throw Error di service atau kendala jaringan
       setErrors({ server: error.message || 'Gagal terhubung ke server backend.' });

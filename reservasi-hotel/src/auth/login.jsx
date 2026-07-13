@@ -171,11 +171,11 @@ export default function Login() {
 
     try {
       // Memanggil fungsi dari authService
-      const data = await login(pelEmail.trim(), pelPw, "Pelanggan".trim());
+      const data = await login(pelEmail.trim(), pelPw, "pelanggan".trim());
       
       setPelSuccess(true);
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userRole", "Pelanggan");
+      localStorage.setItem("token", data.token);  
+      localStorage.setItem("userRole", "pelanggan");
       
       setTimeout(() => {
         window.location.href = "/beranda";
